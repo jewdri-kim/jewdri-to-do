@@ -4,7 +4,37 @@ import { useEffect } from "react";
 import useTodo from '@hooks/useTodo';
 import styled from 'styled-components';
 
+    /* styled(s) */
+    const GroupTodoList = styled.div`
+        margin-top:10px;
+        text-align:left;
+        dt{
+            padding:5px 5%;
+            background:var(--point);
+            font-weight:600;
+            font-size:16px;
+            color:#fff;
 
+            &:hover{
+                opacity:0.6;
+            }
+        }
+        dd{
+            padding:10px 5%;
+            background:var(--border);
+            ul{
+                li{
+                    padding:3px 10px 3px;
+                    &:hover{
+                        background:var(--bg);
+                        opactiy:0.7;
+                    }
+                }
+            }
+        }
+        
+    `;
+    /* styled(e)*/
 
 const TodoList = () => {
     
@@ -12,20 +42,7 @@ const TodoList = () => {
         createTodo();
     }, );
 
-    /* styled(s) */
-    const GroupTodoList = styled.div`
-        margin-top:10px;
-        dt{
-            background:var(--point);
-            color:#fff;
 
-            &:hover{
-                opacity:0.6;
-            }
-        }
-        
-    `;
-    /* styled(e)*/
     const {toDos, createTodo} = useTodo();
 
 

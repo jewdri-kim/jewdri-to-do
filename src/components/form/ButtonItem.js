@@ -8,6 +8,7 @@ const ButtonItem = (props) => {
     const CustomButton = styled(Button)`
         height:42px;
         background-color: var(--point);
+        border-radius:10px;
         &:hover{
             background: var(--point);
             opacity:0.5;
@@ -17,7 +18,7 @@ const ButtonItem = (props) => {
 
 
     return (
-        <CustomButton variant="contained" type="button"  onClick={props.onClick}>{props.name}</CustomButton>
+        <CustomButton variant="contained" type="{props.type}"  onClick={props.onClick}>{props.name}</CustomButton>
     )
 
 }
