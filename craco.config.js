@@ -10,7 +10,9 @@ module.exports = {
                 aliases: {
                     '@styles': './styles',
                     '@components' : './components',
-                    '@pages' : './pages'
+                    '@pages' : './pages',
+                    '@hooks' : './hooks',
+                    '@core' : './@core', 
                 }
             },
         },

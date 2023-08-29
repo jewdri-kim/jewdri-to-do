@@ -8,7 +8,7 @@ import Header from '@components/layout/Header';
 function App() {
   return (
     <BrowserRouter>
-      <div className="to-do-wrap">
+      <div className="App light">
         <Header></Header>
         <Routes>
           <Route path="/" element={<Main />} />

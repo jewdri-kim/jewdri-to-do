@@ -8,7 +8,8 @@ $color-light: (
     "text": #000,
     "bg": #fff,
     "border": rgb(219, 219, 219), 
-    "time":rgb(115, 115, 115),
+    "time":rgb(115, 115, 115), 
+    "point":	#800080  
    // "logo-img": url(../../img/instagram.png)
 );
 $color-dark: (
@@ -16,8 +17,20 @@ $color-dark: (
     "bg": #000,
     "border": rgb(54, 54, 54), 
     "time":rgb(168, 168, 168), 
+    "point":#FF1493   
     //"logo-img": url(../../img/instagram2.png) 
 );
+
+
+@font-face {
+  font-family:'satisfy';
+  src: url(../../fonts/Satisfy-Regular.ttf);
+  font-weight:600;
+}
+ 
+:root{
+  --font-logo:'satisfy';
+}
 
 
 .App {
@@ -35,7 +48,7 @@ $color-dark: (
 //text
 $CBlack:#1d1d1b;
 $CGray:#e5e5e5; 
-$CGray2:#e5e5e5;  
+$CGray2:#e5e5e5;
 
 
 

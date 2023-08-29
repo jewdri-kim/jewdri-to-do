@@ -6,7 +6,7 @@
 * {margin:0;padding:0;vertical-align:baseline;-webkit-text-size-adjust:100%;box-sizing:border-box;word-break:break-all;}
 ::before,::after{box-sizing:border-box;}
 
-body {line-height:1.43;font-family:Noto,sans-serif;font-size:14px;color:$CBlack;letter-spacing:-0.03em;}
+body {background-color:var(--bg);line-height:1.43;font-family:Noto,sans-serif;font-size:14px;color:$CBlack;letter-spacing:-0.03em;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
 ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
@@ -40,8 +40,9 @@ textarea{
 	font-family:Noto,sans-serif;
 	font-weight: 400;
 	@include prefix(appearance, none, webkit moz);
-	background-color:#fff;
-	border:1px solid #e5e5e5;
+	background-color:var(--border);
+	color:var(--text);
+	border:1px solid var(--border);
 	padding: 11px 12px;
 	font-size: 14px;
 	text-overflow: ellipsis;
@@ -104,9 +105,9 @@ input:disabled {
 	color: inherit;
 }
 
-::-webkit-input-placeholder{color:$CGray2;font-weight: 300;}
-::-moz-placeholder{color:$CGray2;font-weight: 300;}
-::placeholder {color:$CGray2;font-weight: 300;}
+::-webkit-input-placeholder{color:var(--text);font-weight: 300;}
+::-moz-placeholder{color:var(--text);font-weight: 300;}
+::placeholder {color:var(--text);font-weight: 300;}
 
 textarea{
 	overflow:auto;

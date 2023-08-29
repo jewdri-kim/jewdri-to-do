@@ -1,6 +1,10 @@
 .App {
   text-align: center;
+  background:var(--bg);
+  color:var(--text)
 }
+
+
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +40,9 @@
     transform: rotate(360deg);
   }
 }
+
+@import 
+'common/base', 
+'common/variable',
+'common/mixin';
+
