@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+@import '../common/variable',
+'../common/mixin';
+
+* {margin:0;padding:0;vertical-align:baseline;-webkit-text-size-adjust:100%;box-sizing:border-box;word-break:break-all;}
+::before,::after{box-sizing:border-box;}
+
+body {line-height:1.43;font-family:Noto,sans-serif;font-size:14px;color:$CBlack;letter-spacing:-0.03em;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: '';display:block;}
+
+/* 테이블 스타일 초기화 */
+table {width:100%;border-collapse:collapse;border-spacing:0;empty-cells:show;table-layout:fixed;}
+th,td{font-weight:600;}
+td {word-wrap:break-word;word-break:keep-all;}
+fieldset {border:0;margin:0;padding:0;}
+legend, caption {visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;}
+address, caption, em, var{font-style:normal;font-weight:inherit;}
+
+/* 링크 */
+a{color:$CBlack;text-decoration:none;}
+
+pre{font-family: inherit;white-space: pre-wrap;}
+
+/* 이미지, 폼관련 요소 */
+img {border:0;vertical-align:top;}
+
+select,
+input,
+textarea{
+	width:100%;
+	vertical-align:middle;
+	box-shadow:none;
+	border-radius:10px;
+	outline:none;
+	border:0;
+	font-family:Noto,sans-serif;
+	font-weight: 400;
+	@include prefix(appearance, none, webkit moz);
+	background-color:#fff;
+	border:1px solid #e5e5e5;
+	padding: 11px 12px;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	color:$CBlack;
+}
+
+input[type="text"],
+input[type="submit"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="reset"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="file"],
+input[type="date"],
+input[type="email"],
+input[type="tel"]{
+	height: 45px;
+	line-height: 45px;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+	position:absolute;top:0;left:0;
+	opacity:0;
+	@include prefix(appearance, none, webkit moz ms o);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus{
+	border-color:$CBlack;
+	outline:none;
+}
+
+input[readonly],
+input[readonly]:focus {
+	pointer-events:none;
+	border-color:$CBlack;
+	background-color: #f7f7f7;
+	.no-style &{
+		border-color:#e5e5e5;
+		background-color: #fff;
+	}
+}
+
+input:disabled {
+	opacity:1;
+	background: none;
+	color: inherit;
+}
+
+::-webkit-input-placeholder{color:$CGray2;font-weight: 300;}
+::-moz-placeholder{color:$CGray2;font-weight: 300;}
+::placeholder {color:$CGray2;font-weight: 300;}
+
+textarea{
+	overflow:auto;
+	resize:none;
+	border:1px solid #e5e5e5;
+}
+
+button{
+	border:0;
+	border-radius:0;
+	box-shadow:none;
+	background:none;
+	cursor:pointer;
+	outline:none;
+	font-family:Noto,sans-serif;
+	color:$CBlack;
+	&:disabled{
+		cursor:default;
+	}
+}
+
+.hidden {position:absolute;width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;}
+
+::-webkit-scrollbar {display:none;width:2px;height:2px}
+::-webkit-scrollbar-track {background: #f1f1f1}
+::-webkit-scrollbar-thumb {background:#a7a7a7}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    background: none;
+}
+/*
+input[type=date]{
+	background:url(~@/assets/images/svg/ico_calender.svg) 100% 3px no-repeat;
+	background-size:22px auto;
+}*/
+
+input[type='file'] {
+	position: absolute;
+	width: 0;
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+}
+
+.pinch-zoom-wrapper{background-color: transparent!important;}
