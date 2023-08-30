@@ -25,30 +25,33 @@ const useTodo = () => {
 
     }
 
-    const setInsertTodo = (groupID, content) =>{
-        const updatedData = toDos.map(group=>{
-            if(group.id === groupID){
+    const setInsertTodo = (groupId, content) =>{
+
+        const updatedData =  toDos.map(group=>{
+            if(group.id === groupId){
                 const id = group.list[group.list.length-1].id;
                 const newId = parseInt(id[id.length-1])+1;
+                const newData = {
+                    id: 'item_'+group.id+'-'+newId,
+                    checked: false, 
+                    state: 'todo',
+                    date: today,
+                    text: content
+                }
+                group.list.push(newData);
                 return {
                     ...group,
                     list:[
-                        ...group.list, {
-                            id: 'item_'+group.id+'-'+newId,
-                            checked: false, 
-                            state: 'todo',
-                            date: today,
-                            text: content
-                        }
+                        ...group.list,  
                     ]
                 }
+            }else{
+                return group;
             }
-
         })
 
-        setTodo([...toDos, updatedData])
+        setTodo([...toDos, updatedData]);
 
-        
     }
     return {
         toDos,

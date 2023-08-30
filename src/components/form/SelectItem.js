@@ -8,7 +8,7 @@ import { styled } from '@mui/system';
     /* styled(s) */
 
     const CustomForm = styled(FormControl)`
-        border-color:var(--point);
+        border-color:var(--point);k
         &:focus{
             color:var(--point);
             border-color:var(--point);
@@ -22,6 +22,7 @@ import { styled } from '@mui/system';
         background:var(--border);
         border-color:var(--border);
         text-align:left;
+        color:var(--text);
 
         &.Mui-focused{
             border:0;
@@ -40,6 +41,7 @@ import { styled } from '@mui/system';
     const CustomLabel = styled(InputLabel)`
         line-height:42px;
         font-size:14px;top:-13px;color:#1d1d1b;
+        color:var(--text);
 
         &.Mui-focused{
            color:var(--point);

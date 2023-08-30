@@ -8,7 +8,7 @@ import Header from '@components/layout/Header';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App light">
+      <div className="App dark">
         <Header></Header>
         <Routes>
           <Route path="/" element={<Main />} />

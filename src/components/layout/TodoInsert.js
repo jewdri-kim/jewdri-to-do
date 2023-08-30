@@ -1,8 +1,7 @@
 
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import useTodo from '@hooks/useTodo';
 
 import ButtonItem from '@components/form/ButtonItem'; 
 import SelectItem from '@components/form/SelectItem';
@@ -23,51 +22,32 @@ const FormBox = styled.div`
 `;
 /* styled(e)*/
 
-const TodoInsert = () => {
+const TodoInsert = (props) => {
 
     const [toDoContent, setToDoContent] = useState('');
-    const [group, setGroup] = useState('');
-    const {toDos, createTodo, setInsertTodo} = useTodo();
 
-
-    useEffect(() => {
-        createTodo();
-    }, []);
-
-    const groupChange = (event) =>{
-        setGroup(event.target.value);
-    }
     const onTextChange = (event) => {
-        setToDoContent(event.target.value)
-        console.log('onTextChange : '+ toDoContent);
+        console.log(event.target.value);
+        setToDoContent(event.target.value);
     };
-
-    const onSubmit = useCallback (e =>{
-        e.preventDefault();
+    const onSubmit =  () =>{
         if(toDoContent.length < 1){
             alert('할 일을 입력하세요!!!!');
             return; 
         }else{
-
-            const _toDoConent = {
-
-            };
+            props.onSubmit(toDoContent);
             setToDoContent('');
-    
-            setInsertTodo(group, _toDoConent);
-
-            
         }
 
-    })
+    }
 
     return ( 
         <>
             <InsertWrap>
-                {toDos.length > 1 ? 
+                {props.toDos.length > 1 ? 
                 (
                     <>
-                        <SelectItem label="카테고리 선택" value={group} onChange={groupChange} list={toDos}></SelectItem>
+                        <SelectItem label="카테고리 선택" value={props.group} onChange={props.groupChange} list={props.toDos}></SelectItem>
                         <FormBox>
                             <input placeholder="할 일을 입력하세요" id="todoContent" value={toDoContent} onChange={onTextChange}/>
                             <ButtonItem name="등록" type="submit" onClick={onSubmit}/>

@@ -1,7 +1,7 @@
 
 
-import { useEffect } from "react";
-import useTodo from '@hooks/useTodo';
+
+
 import styled from 'styled-components';
 
     /* styled(s) */
@@ -36,46 +36,44 @@ import styled from 'styled-components';
     `;
     /* styled(e)*/
 
-const TodoList = () => {
-    
-    useEffect(() => {
-        createTodo();
-    }, );
+const TodoList = (props) => {
 
-
-    const {toDos, createTodo} = useTodo();
-
-
-    return ( 
+    return (   
         <div>
             {
-                toDos.map((item)=>(
-                    <GroupTodoList key={item.id}>
-                        <dt>{item.group}</dt>
-                        <dd>
-                            {item.list.length > 1 ? 
-                                (
-                                    <ul>
-                                        {
-                                        item.list.map((listItem)=>(
-                                            <li key={listItem.id}>
-                                                {listItem.text}
-                                            </li>
-                                        ))
-                                        }
-                                    </ul>
-                                ):
-                                (
-                                    <p>해당 그룹의 할일 목록이 없습니다.</p>
-                                )
-                            }
-                        </dd>
-                    </GroupTodoList>
-                ))
+                props.toDoData.length > 1 ?
+                (
+                    props.toDoData.map((item)=>(
+                        <GroupTodoList key={item.id}>
+                            <dt>{item.group}</dt>
+                            <dd>
+                                {item.list.length > 1 ? 
+                                    (
+                                        <ul>
+                                            {
+                                            item.list.map((listItem)=>(
+                                                <li key={listItem.id}>
+                                                    {listItem.text}
+                                                </li>
+                                            ))
+                                            }
+                                        </ul>
+                                    ):
+                                    (
+                                        <p>해당 그룹의 할일 목록이 없습니다.</p>
+                                    )
+                                }
+                            </dd>
+                        </GroupTodoList>
+                    ))
+                ):(
+                    <p>할 일 목록이 없습니다.</p>
+                )
             }
         </div>
     );
 
 }
+
 
 export default TodoList;
