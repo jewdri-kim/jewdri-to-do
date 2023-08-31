@@ -55,7 +55,7 @@ function Main(props) {
 
 }
 
-/* Add Group */
+/* Add Group - */
 const setInsertGroup = (groupName) => {
   const idx = (props.toDos.length-1);
   const newId = parseInt(props.toDos[idx].id) + 1;
