@@ -22,6 +22,7 @@ function App() {
     setDatas(content);
   }
 
+
   useEffect(() => {
       createTodo();
   }, []);
@@ -31,8 +32,8 @@ function App() {
       <div className="App light">
         <Header></Header>
         <Routes>
-          <Route path="/" element={<Main toDos={datas} setTodos={resetData} />} />
-          <Route path="/trash" element={<TrashList toDos={datas} setTodos={resetData} />}  />
+          <Route path="/" element={<Main toDos={datas} setTodos={resetData}  />} />
+          <Route path="/trash" element={<TrashList toDos={datas} setTodos={(resetData)} />}  />
         </Routes>
       </div>
     </BrowserRouter>

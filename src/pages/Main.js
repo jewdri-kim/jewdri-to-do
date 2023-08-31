@@ -10,9 +10,6 @@ function Main(props) {
 
   const [group, setGroup] = useState('');
 
- 
-
-
   /* Insert */
   const groupChange = (event) =>{
     console.log(event.target.value);
@@ -53,6 +50,20 @@ function Main(props) {
 
 }
 
+/* Add Group */
+const setInsertGroup = (groupName) => {
+  const idx = props.toDos.length-1;
+  const newId = props.toDos[idx].id + 1;
+
+  props.setTodos([
+    ...props.toDos, {
+      id: newId,
+      group: groupName,
+      list: [],
+    } 
+  ])
+}
+
 /* Delete */
 
 const deleteTodo = (itemId) =>{
@@ -76,6 +87,7 @@ const deleteTodo = (itemId) =>{
     <div className="main-wrap">
       <TodoInsert 
         group={group} toDos={props.toDos} 
+        addGroup={setInsertGroup}
         groupChange={groupChange}
         onSubmit={onSubmit}
         />

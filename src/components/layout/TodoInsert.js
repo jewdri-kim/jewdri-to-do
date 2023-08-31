@@ -25,11 +25,16 @@ const FormBox = styled.div`
 const TodoInsert = (props) => {
 
     const [toDoContent, setToDoContent] = useState('');
+    const [groupName, setGroupName] = useState('');
 
     const onTextChange = (event) => {
         console.log(event.target.value);
         setToDoContent(event.target.value);
     };  
+
+    const onGroupChange = (event) =>{
+        setGroupName(event.target.value);
+    }
     const onSubmit =  () =>{
         if(toDoContent.length < 1){
             alert('할 일을 입력하세요!!!!');
@@ -55,6 +60,10 @@ const TodoInsert = (props) => {
                         <FormBox>
                             <input placeholder="할 일을 입력하세요" id="todoContent" value={toDoContent} onChange={onTextChange}/>
                             <ButtonItem name="등록" type="submit" onClick={onSubmit}/>
+                        </FormBox>
+                        <FormBox>
+                            <input placeholder="추가할 카테고리를 입력하세요" id="groupName" value={groupName} onChange={onGroupChange}/>
+                            <ButtonItem name="추가" type="button" onClick={()=>props.addGroup(groupName)}/>
                         </FormBox>
                     </>
                 ) : 
