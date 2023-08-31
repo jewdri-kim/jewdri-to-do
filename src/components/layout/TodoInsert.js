@@ -33,9 +33,10 @@ const TodoInsert = (props) => {
     };  
 
     const onGroupChange = (event) =>{
-        setGroupName(event.target.value);
+       setGroupName(event.target.value);
     }
-    const onSubmit =  () =>{
+    const onSubmit =  (e) =>{
+        e.preventDefault();
         if(toDoContent.length < 1){
             alert('할 일을 입력하세요!!!!');
             return; 
@@ -59,7 +60,7 @@ const TodoInsert = (props) => {
                         <SelectItem label="카테고리 선택" value={props.group} onChange={props.groupChange} list={props.toDos}></SelectItem>
                         <FormBox>
                             <input placeholder="할 일을 입력하세요" id="todoContent" value={toDoContent} onChange={onTextChange}/>
-                            <ButtonItem name="등록" type="submit" onClick={onSubmit}/>
+                            <ButtonItem name="등록" type="button" onClick={onSubmit}/>
                         </FormBox>
                         <FormBox>
                             <input placeholder="추가할 카테고리를 입력하세요" id="groupName" value={groupName} onChange={onGroupChange}/>

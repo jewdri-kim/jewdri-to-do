@@ -24,14 +24,17 @@ function Main(props) {
 
     const updatedData =  props.toDos.map(groupItem=>{
         if(groupItem.id === group){
-            const id = groupItem.list[groupItem.list.length-1].id;
-            const newId = parseInt(id[id.length-1])+1;
+          console.log('groupItem.list.length')
+          console.log(groupItem.list.length)
+            const id = groupItem.list.length >= 1 ? groupItem.list[groupItem.list.length-1].id : 0;
+            const newId = id === 0 ? 1 : parseInt(id[id.length-1])+1;
             const newData = {
                 id: 'item_'+groupItem.id+'-'+newId,
                 checked: false, 
                 state: 'todo',
                 date: today,
-                text: content
+                text: content,
+                isRemoved : false,
             }
             groupItem.list.push(newData);
             return {
@@ -45,15 +48,17 @@ function Main(props) {
         }
     })
 
-    props.setTodos(updatedData);
+    props.setTodos([
+      ...updatedData
+    ]);
    
 
 }
 
 /* Add Group */
 const setInsertGroup = (groupName) => {
-  const idx = props.toDos.length-1;
-  const newId = props.toDos[idx].id + 1;
+  const idx = (props.toDos.length-1);
+  const newId = parseInt(props.toDos[idx].id) + 1;
 
   props.setTodos([
     ...props.toDos, {
