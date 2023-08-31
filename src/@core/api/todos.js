@@ -17,6 +17,7 @@ const todo = {
                     checked: true, 
                     state: 'end', 
                     date: today,
+                    isRemoved: false
                 },
                 
                 {
@@ -24,7 +25,8 @@ const todo = {
                     text: '웨이트 등',
                     checked: true, 
                     state: 'ing', 
-                    date: new Date(today.setDate(today.getDate()+1)), 
+                    date: new Date(today.setDate(today.getDate()+1)),
+                    isRemoved: true 
                 },
                 
                 {
@@ -32,7 +34,8 @@ const todo = {
                     text: '스트레칭',
                     checked: false, 
                     state: 'todo', 
-                    date: today, 
+                    date: today,
+                    isRemoved: true 
                 },
             ]
         },
@@ -47,7 +50,8 @@ const todo = {
                     text: '티켓정산',
                     checked: true, 
                     state: 'hold', 
-                    date: new Date(today.setDate(today.getDate()-1))
+                    date: new Date(today.setDate(today.getDate()-1)),
+                    isRemoved: true
                 },
                 
                 {
@@ -55,7 +59,8 @@ const todo = {
                     text: '점심회식',
                     checked: true, 
                     date: today,  
-                    state: 'todo', 
+                    state: 'todo',
+                    isRemoved: true
                 },
                 
                 {
@@ -63,7 +68,17 @@ const todo = {
                     text: '주간보고',
                     checked: false, 
                     date: today,   
-                    state: 'ing', 
+                    state: 'ing',
+                    isRemoved: true 
+                },
+                
+                {
+                    id: 'item_2-4',
+                    text: '주간보고22',
+                    checked: false, 
+                    date: today,   
+                    state: 'ing',
+                    isRemoved: true 
                 },
             ]
         }

@@ -46,7 +46,7 @@ textarea{
 	padding: 11px 12px;
 	font-size: 14px;
 	text-overflow: ellipsis;
-	color:$CBlack;
+	color:var(--text);
 }
 
 input[type="text"],

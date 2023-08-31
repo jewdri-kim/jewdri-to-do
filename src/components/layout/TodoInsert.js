@@ -29,12 +29,16 @@ const TodoInsert = (props) => {
     const onTextChange = (event) => {
         console.log(event.target.value);
         setToDoContent(event.target.value);
-    };
+    };  
     const onSubmit =  () =>{
         if(toDoContent.length < 1){
             alert('할 일을 입력하세요!!!!');
             return; 
         }else{
+            if(props.group === ''){
+                alert('카테고리를 선택하세요!!!');
+                return; 
+            }
             props.onSubmit(toDoContent);
             setToDoContent('');
         }

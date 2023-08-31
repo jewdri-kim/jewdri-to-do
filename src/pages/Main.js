@@ -1,26 +1,17 @@
 
-import { useState, useEffect } from "react";
-import { reqGetTodo } from "@core/api/todos";
+import { useState } from "react";
 import useDate from '@hooks/useDate';
 import TodoInsert from '@components/layout/TodoInsert';
 import TodoList from '@components/layout/TodoList';
  
-function Main() {
+function Main(props) {
 
   const {today} = useDate();
-  const [toDos, setTodos] = useState([]);
+
   const [group, setGroup] = useState('');
 
-  /* List */
-  const createTodo = () => {
-      const response = reqGetTodo();
-      setTodos(response);
-      console.log(response);
-  }  
+ 
 
-  useEffect(() => {
-      createTodo();
-  }, []);
 
   /* Insert */
   const groupChange = (event) =>{
@@ -34,7 +25,7 @@ function Main() {
 
   const setInsertTodo = (content) =>{
 
-    const updatedData =  toDos.map(groupItem=>{
+    const updatedData =  props.toDos.map(groupItem=>{
         if(groupItem.id === group){
             const id = groupItem.list[groupItem.list.length-1].id;
             const newId = parseInt(id[id.length-1])+1;
@@ -56,22 +47,39 @@ function Main() {
             return groupItem;
         }
     })
-    setTodos([...toDos, updatedData]);
+
+    props.setTodos(updatedData);
    
 
 }
 
+/* Delete */
+
+const deleteTodo = (itemId) =>{
+  const updatedData = props.toDos.map(group => {
+    const updatedList = group.list.map(item => {
+      if (item.id === itemId) {
+        return { ...item, isRemoved: true };
+      }
+      return item;
+    });
+    return { ...group, list: updatedList };
+  });
   
+  //const updatedTodo = { updatedData };
+  console.log(updatedData);
+  props.setTodos(updatedData);
+}
 
 
   return (
     <div className="main-wrap">
       <TodoInsert 
-        group={group} toDos={toDos} 
+        group={group} toDos={props.toDos} 
         groupChange={groupChange}
         onSubmit={onSubmit}
         />
-      <TodoList toDoData={toDos}/>
+      <TodoList toDoData={props.toDos} delete={deleteTodo}/>
     </div>
   );
 }

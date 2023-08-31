@@ -2,6 +2,7 @@
 
 import useDate from '@hooks/useDate';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 const Haeder = ()=> {
 
@@ -25,6 +26,10 @@ const Haeder = ()=> {
       <Header>
         <h1>Jewdri's To Do</h1>
         <p>{getYear()}년 {getMonth()}월 {getDate()}일 {getHour()}시 {getMinute()}분</p>
+        <ul>
+          <li><Link to="/">할 일</Link></li>
+          <li><Link to="/trash">휴지통</Link></li>
+        </ul>
       </Header>
     </div> 
   );

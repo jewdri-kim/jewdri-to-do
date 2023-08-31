@@ -3,9 +3,15 @@
 
 
 import styled from 'styled-components';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-    /* styled(s) */
-    const GroupTodoList = styled.div`
+
+
+const TodoList = (props) => {
+
+        /* styled(s) */
+        const GroupTodoList = styled.div`
         margin-top:10px;
         text-align:left;
         dt{
@@ -14,6 +20,7 @@ import styled from 'styled-components';
             font-weight:600;
             font-size:16px;
             color:#fff;
+
 
             &:hover{
                 opacity:0.6;
@@ -36,31 +43,35 @@ import styled from 'styled-components';
     `;
     /* styled(e)*/
 
-const TodoList = (props) => {
+    const isDataCheck = props.toDoData.some((group)=>{
+        return group.list.some(item => item.isRemoved === false);
+    })
 
     return (   
         <div>
-            {
-                props.toDoData.length > 1 ?
+            {   
+                isDataCheck ?
                 (
                     props.toDoData.map((item)=>(
                         <GroupTodoList key={item.id}>
                             <dt>{item.group}</dt>
                             <dd>
-                                {item.list.length > 1 ? 
+                                {
+                                item.list.length > 1 && 
                                     (
                                         <ul>
                                             {
                                             item.list.map((listItem)=>(
+                                                !listItem.isRemoved &&
                                                 <li key={listItem.id}>
                                                     {listItem.text}
+                                                    <IconButton aria-label="delete" onClick={()=>props.delete(listItem.id)}>
+                                                        <DeleteIcon />
+                                                    </IconButton>
                                                 </li>
                                             ))
                                             }
                                         </ul>
-                                    ):
-                                    (
-                                        <p>해당 그룹의 할일 목록이 없습니다.</p>
                                     )
                                 }
                             </dd>
